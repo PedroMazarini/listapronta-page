@@ -1,11 +1,434 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Website</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lista Pronta — a lista de compras que a casa inteira usa junto</title>
+<meta name="description" content="Lista de compras compartilhada para família e amigos. Anotem e marquem os itens juntos, ao vivo. Grátis para Android.">
+<meta name="theme-color" content="#D3E8F9">
+<link rel="icon" href="assets/appicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="assets/appicon.webp">
+<link rel="canonical" href="https://listapronta.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lista Pronta">
+<meta property="og:description" content="A lista de compras que a casa inteira usa junto.">
+<meta property="og:url" content="https://listapronta.app/">
+<meta property="og:image" content="https://listapronta.app/assets/appicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Lista Pronta!</h1>
+<a class="skip-link" href="#conteudo" data-i18n="skip">Ir para o conteúdo</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <img class="brand__mark" src="assets/appicon.webp" alt="" width="48" height="48">
+      <span class="brand__word">Lista Pronta</span>
+    </a>
+    <nav class="site-header__nav" aria-label="Principal" data-i18n-aria-label="nav_label">
+      <a href="#como-funciona" data-i18n="nav_how">Como funciona</a>
+      <a href="#compartilhar" data-i18n="nav_share">Compartilhar</a>
+      <div class="langs" role="group" aria-label="Idioma" data-i18n-aria-label="lang_label" data-langs></div>
+      <a class="btn btn--play" href="https://play.google.com/store/apps/details?id=app.mazarini.listapronta" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M5 3.5v17c0 .8.9 1.3 1.6.9l14-8.5c.6-.4.6-1.3 0-1.7l-14-8.5C5.9 2.2 5 2.7 5 3.5z"/></svg>
+        <span data-i18n="cta">Baixar no Google Play</span>
+      </a>
+    </nav>
+    <a class="btn btn--play btn--sm site-header__cta-mobile" href="https://play.google.com/store/apps/details?id=app.mazarini.listapronta" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M5 3.5v17c0 .8.9 1.3 1.6.9l14-8.5c.6-.4.6-1.3 0-1.7l-14-8.5C5.9 2.2 5 2.7 5 3.5z"/></svg>
+      <span data-i18n="cta_short">Baixar</span>
+    </a>
+  </div>
+  <div class="site-header__langs">
+    <div class="langs" role="group" aria-label="Idioma" data-i18n-aria-label="lang_label" data-langs></div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ---------------------------------------------------------- hero -->
+  <section class="section hero">
+    <div class="section__inner two-col">
+      <div class="hero__text">
+        <p class="hero__tag">
+          <span class="avatar-stack avatar-stack--hero" aria-hidden="true">
+            <span class="avatar join" style="--i:0"><img src="assets/avatars/avatar_01.webp" alt="" width="60" height="60"></span>
+            <span class="avatar join" style="--i:1"><img src="assets/avatars/avatar_02.webp" alt="" width="60" height="60"></span>
+            <span class="avatar join" style="--i:2"><img src="assets/avatars/avatar_03.webp" alt="" width="60" height="60"></span>
+            <span class="avatar join" style="--i:3"><img src="assets/avatars/avatar_10.webp" alt="" width="60" height="60"></span>
+            <span class="avatar join" style="--i:4"><img src="assets/avatars/avatar_15.webp" alt="" width="60" height="60"></span>
+          </span>
+          <span class="hero__tag-text" data-i18n="hero_tag">A família toda na mesma lista</span>
+        </p>
+        <h1 data-i18n="hero_h">A lista de compras que a casa inteira usa junto.</h1>
+        <p class="lead lead--ink" data-i18n="hero_p">Compartilhe sua lista com família e amigos. Anotem e marquem os itens juntos, de um jeito fácil e conectado.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--play" href="https://play.google.com/store/apps/details?id=app.mazarini.listapronta" rel="noopener">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M5 3.5v17c0 .8.9 1.3 1.6.9l14-8.5c.6-.4.6-1.3 0-1.7l-14-8.5C5.9 2.2 5 2.7 5 3.5z"/></svg>
+            <span data-i18n="cta">Baixar no Google Play</span>
+          </a>
+          <a class="btn btn--outline" href="#como-funciona">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span data-i18n="see_how">Ver como funciona</span>
+          </a>
+        </div>
+        <p class="hero__note" data-i18n="hero_note">Grátis · Android</p>
+      </div>
+
+      <div class="hero__art">
+        <div class="papercard listcard">
+          <div class="papercard__front">
+            <span class="tape" aria-hidden="true"></span>
+            <div class="listcard__head">
+              <h2 class="listcard__title" data-i18n="card_title">Mercado da semana</h2>
+              <span class="avatar-stack avatar-stack--card" aria-hidden="true">
+                <span class="avatar join" style="--i:0"><img src="assets/avatars/avatar_01.webp" alt="" width="44" height="44"></span>
+                <span class="avatar join" style="--i:1"><img src="assets/avatars/avatar_02.webp" alt="" width="44" height="44"></span>
+                <span class="avatar join" style="--i:2"><img src="assets/avatars/avatar_10.webp" alt="" width="44" height="44"></span>
+                <span class="avatar join" style="--i:3"><img src="assets/avatars/avatar_03.webp" alt="" width="44" height="44"></span>
+              </span>
+            </div>
+            <p class="progress">
+              <span class="progress__track"><span class="progress__fill" id="hero-progress" style="width:50%"></span></span>
+              <span class="progress__label" id="hero-count">3 de 6</span>
+            </p>
+            <div class="rows" id="hero-rows">
+              <button type="button" class="row" role="checkbox" aria-checked="true" data-checked="true" data-hero="0">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+                <span class="row__body"><span class="row__name" data-i18n="items.0">Leite integral</span></span>
+                <span class="row__marker" aria-hidden="true"><img src="assets/avatars/avatar_03.webp" alt="" width="28" height="28"></span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_dairy.webp" alt="" width="29" height="29"></span>
+              </button>
+              <button type="button" class="row" role="checkbox" aria-checked="true" data-checked="true" data-hero="1">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+                <span class="row__body"><span class="row__name" data-i18n="items.1">Pão de forma</span></span>
+                <span class="row__marker" aria-hidden="true"><img src="assets/avatars/avatar_02.webp" alt="" width="28" height="28"></span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_bakery_breakfast.webp" alt="" width="29" height="29"></span>
+              </button>
+              <button type="button" class="row" role="checkbox" aria-checked="true" data-checked="true" data-hero="2">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+                <span class="row__body"><span class="row__name" data-i18n="items.2">Ovos</span></span>
+                <span class="row__marker" aria-hidden="true"><img src="assets/avatars/avatar_10.webp" alt="" width="28" height="28"></span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_meat.webp" alt="" width="29" height="29"></span>
+              </button>
+              <button type="button" class="row" role="checkbox" aria-checked="false" data-checked="false" data-hero="3">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+                <span class="row__body"><span class="row__name" data-i18n="items.3">Banana</span></span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_fruit.webp" alt="" width="29" height="29"></span>
+              </button>
+              <button type="button" class="row" role="checkbox" aria-checked="false" data-checked="false" data-hero="4">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+                <span class="row__body"><span class="row__name" data-i18n="items.4">Café</span></span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_beverages.webp" alt="" width="29" height="29"></span>
+              </button>
+              <button type="button" class="row" role="checkbox" aria-checked="false" data-checked="false" data-hero="5">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+                <span class="row__body"><span class="row__name" data-i18n="items.5">Detergente</span></span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_cleaning.webp" alt="" width="29" height="29"></span>
+              </button>
+            </div>
+            <p class="listcard__pill">
+              <span class="pill">
+                <span class="pill__icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                <span class="pill__label"><span data-i18n="add_item">Adicionar item</span><span class="pill__spark" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="#1F1A16"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5 9.8 12.2 3.5 10l6.3-1.7z"/><path d="M19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9z"/></svg></span></span>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------------------------------------------- how it works -->
+  <section class="how" id="como-funciona">
+    <div class="how__inner">
+      <div class="text-block text-block--center how__text">
+        <p class="kicker" data-i18n="how_k">Como funciona</p>
+        <h2 data-i18n="how_h">Três passos. É só isso.</h2>
+        <p class="lead" data-i18n="how_p">Crie sua lista. Adicione itens. Marque o que comprou.</p>
+      </div>
+      <div class="phones">
+        <figure class="phone-figure">
+          <div class="phone"><div class="phone__screen"><div class="phone__inner" aria-hidden="true"><div style="width:390px;height:844px;overflow:hidden;position:relative;background:#D3E8F9;"><div style="height:54px;"></div><div style="display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;"><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div><div style="font-size:30px;font-weight:800;letter-spacing:-0.5px;">Lista Pronta</div><div style="width:48px;height:48px;"></div></div><div style="display:flex;flex-direction:column;gap:14px;padding:20px 20px 0 20px;"><div style="position:relative;padding:0 0 10px 0;"><div style="position:absolute;left:10px;right:10px;top:6px;bottom:4px;background:#FFFFFF;border-radius:24px;opacity:0.55;transform:rotate(-2.0deg);"></div><div style="position:absolute;left:4px;right:4px;top:3px;bottom:7px;background:#FFFFFF;border-radius:24px;opacity:0.8;transform:rotate(1.0deg);"></div><div style="position:relative;background:#FFFFFF;border-radius:24px;padding:22px 22px 18px 22px;box-shadow:0 8px 20px rgba(60,40,10,0.10);min-height:118px;display:flex;flex-direction:column;gap:14px;"><div style="position:absolute;left:18px;top:-8px;width:54px;height:16px;background:#F7C948;border-radius:3px;transform:rotate(-4deg);opacity:0.95;"></div><div style="display:flex;align-items:center;gap:8px;"><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex-grow:1;"><div style="font-size:22px;font-weight:800;line-height:28px;">Mercado da semana</div><div style="font-size:15px;font-weight:600;color:#9A8E85;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Leite, pão de forma, ovos, café…</div></div><div style="display:flex;align-items:baseline;flex-shrink:0;padding-left:12px;white-space:nowrap;"><div style="font-size:28px;font-weight:800;line-height:32px;">9</div><div style="font-size:18px;font-weight:700;color:#6B5F56;">/12</div></div></div><div style="height:10px;border-radius:5px;background:#F7C948;opacity:0.28;"></div><div style="height:10px;border-radius:5px;background:#F7C948;width:calc((100% - 44px) * 75 / 100);position:absolute;left:22px;bottom:18px;"></div></div></div><div style="position:relative;padding:0 0 10px 0;"><div style="position:absolute;left:10px;right:10px;top:6px;bottom:4px;background:#FFFFFF;border-radius:24px;opacity:0.55;transform:rotate(2.0deg);"></div><div style="position:absolute;left:4px;right:4px;top:3px;bottom:7px;background:#FFFFFF;border-radius:24px;opacity:0.8;transform:rotate(-1.0deg);"></div><div style="position:relative;background:#FFFFFF;border-radius:24px;padding:22px 22px 18px 22px;box-shadow:0 8px 20px rgba(60,40,10,0.10);min-height:118px;display:flex;flex-direction:column;gap:14px;"><div style="position:absolute;left:18px;top:-8px;width:54px;height:16px;background:#F2705C;border-radius:3px;transform:rotate(-4deg);opacity:0.95;"></div><div style="display:flex;align-items:center;gap:8px;"><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex-grow:1;"><div style="font-size:22px;font-weight:800;line-height:28px;">Churrasco de sábado</div><div style="font-size:15px;font-weight:600;color:#9A8E85;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Picanha, carvão, pão de alho…</div></div><div style="display:flex;align-items:baseline;flex-shrink:0;padding-left:12px;white-space:nowrap;"><div style="font-size:28px;font-weight:800;line-height:32px;">2</div><div style="font-size:18px;font-weight:700;color:#6B5F56;">/8</div></div></div><div style="height:10px;border-radius:5px;background:#F2705C;opacity:0.28;"></div><div style="height:10px;border-radius:5px;background:#F2705C;width:calc((100% - 44px) * 25 / 100);position:absolute;left:22px;bottom:18px;"></div></div></div><div style="position:relative;padding:0 0 10px 0;"><div style="position:absolute;left:10px;right:10px;top:6px;bottom:4px;background:#FFFFFF;border-radius:24px;opacity:0.55;transform:rotate(-1.5deg);"></div><div style="position:absolute;left:4px;right:4px;top:3px;bottom:7px;background:#FFFFFF;border-radius:24px;opacity:0.8;transform:rotate(0.75deg);"></div><div style="position:relative;background:#FFFFFF;border-radius:24px;padding:22px 22px 18px 22px;box-shadow:0 8px 20px rgba(60,40,10,0.10);min-height:118px;display:flex;flex-direction:column;gap:14px;"><div style="position:absolute;left:18px;top:-8px;width:54px;height:16px;background:#7CC0F0;border-radius:3px;transform:rotate(-4deg);opacity:0.95;"></div><div style="display:flex;align-items:center;gap:8px;"><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex-grow:1;"><div style="font-size:22px;font-weight:800;line-height:28px;">Limpeza</div><div style="font-size:15px;font-weight:600;color:#9A8E85;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Detergente, esponja, água sanitária…</div></div><div style="display:flex;align-items:baseline;flex-shrink:0;padding-left:12px;white-space:nowrap;"><div style="font-size:28px;font-weight:800;line-height:32px;">7</div><div style="font-size:18px;font-weight:700;color:#6B5F56;">/7</div></div></div><div style="height:10px;border-radius:5px;background:#7CC0F0;opacity:0.28;"></div><div style="height:10px;border-radius:5px;background:#7CC0F0;width:calc((100% - 44px) * 100 / 100);position:absolute;left:22px;bottom:18px;"></div></div></div><div style="position:relative;padding:0 0 10px 0;"><div style="position:absolute;left:10px;right:10px;top:6px;bottom:4px;background:#FFFFFF;border-radius:24px;opacity:0.55;transform:rotate(2.0deg);"></div><div style="position:absolute;left:4px;right:4px;top:3px;bottom:7px;background:#FFFFFF;border-radius:24px;opacity:0.8;transform:rotate(-1.0deg);"></div><div style="position:relative;background:#FFFFFF;border-radius:24px;padding:22px 22px 18px 22px;box-shadow:0 8px 20px rgba(60,40,10,0.10);min-height:118px;display:flex;flex-direction:column;gap:14px;"><div style="position:absolute;left:18px;top:-8px;width:54px;height:16px;background:#7FCB8F;border-radius:3px;transform:rotate(-4deg);opacity:0.95;"></div><div style="display:flex;align-items:center;gap:8px;"><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex-grow:1;"><div style="font-size:22px;font-weight:800;line-height:28px;">Feira</div><div style="font-size:15px;font-weight:600;color:#9A8E85;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Banana, tomate, alface…</div></div><div style="display:flex;align-items:baseline;flex-shrink:0;padding-left:12px;white-space:nowrap;"><div style="font-size:28px;font-weight:800;line-height:32px;">0</div><div style="font-size:18px;font-weight:700;color:#6B5F56;">/5</div></div></div><div style="height:10px;border-radius:5px;background:#7FCB8F;opacity:0.28;"></div><div style="height:10px;border-radius:5px;background:#7FCB8F;width:calc((100% - 44px) * 0 / 100);position:absolute;left:22px;bottom:18px;"></div></div></div></div><div style="position:absolute;left:50%;transform:translateX(-50%);bottom:34px;"><div style="height:72px;padding:8px;border-radius:36px;background:#FFFFFF;display:inline-flex;align-items:center;gap:14px;box-shadow:0 12px 28px rgba(80,40,20,0.18);border:1.5px solid rgba(31,26,22,0.12);"><div style="width:56px;height:56px;border-radius:22px;background:#1F1A16;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></div><div style="font-size:18px;font-weight:800;padding-right:22px;white-space:nowrap;display:flex;align-items:center;">Nova lista</div></div></div></div></div></div></div>
+          <figcaption data-i18n="how_1">Suas listas</figcaption>
+        </figure>
+        <figure class="phone-figure">
+          <div class="phone"><div class="phone__screen"><div class="phone__inner" aria-hidden="true"><div style="width:390px;height:844px;overflow:hidden;position:relative;background:#D3E8F9;"><div style="height:54px;"></div><div style="display:flex;align-items:center;gap:12px;padding:0 20px;height:56px;"><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div><div style="flex-grow:1;min-width:0;text-align:center;font-size:22px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Mercado da semana</div><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#1F1A16"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg></div></div><div style="padding:14px 24px 0 24px;"><div style="display:flex;align-items:center;gap:12px;"><div style="flex-grow:1;height:16px;border-radius:8px;background:rgba(255,255,255,0.7);overflow:hidden;"><div style="width:43%;height:100%;background:#7CC0F0;border-radius:8px;"></div></div><div style="font-size:18px;font-weight:800;white-space:nowrap;">3 de 7</div></div></div><div style="display:flex;align-items:center;justify-content:space-between;padding:22px 28px 8px 28px;"><div style="font-size:16px;font-weight:800;color:rgba(31,26,22,0.7);text-transform:uppercase;letter-spacing:1px;">Faltam · 4</div></div><div style="padding:0 20px;display:flex;flex-direction:column;gap:8px;"><div style="display:flex;align-items:center;gap:14px;background:#FFFFFF;border-radius:20px;padding:13px 16px;min-height:64px;border-left:6px solid #7CC0F0;"><div style="width:38px;height:38px;border-radius:12px;border:3px solid #1F1A16;background:#FFFFFF;flex-shrink:0;box-sizing:border-box;"></div><div style="font-size:20px;font-weight:700;flex-grow:1;">Leite integral</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><img alt="" src="assets/cat_dairy.webp" style="width:29px;height:29px;display:block;"></div></div><div style="display:flex;align-items:center;gap:14px;background:#FFFFFF;border-radius:20px;padding:13px 16px;min-height:64px;border-left:6px solid #7CC0F0;"><div style="width:38px;height:38px;border-radius:12px;border:3px solid #1F1A16;background:#FFFFFF;flex-shrink:0;box-sizing:border-box;"></div><div style="font-size:20px;font-weight:700;flex-grow:1;">Pão de forma</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><img alt="" src="assets/cat_bakery_breakfast.webp" style="width:29px;height:29px;display:block;"></div></div><div style="display:flex;align-items:center;gap:14px;background:#FFFFFF;border-radius:20px;padding:13px 16px;min-height:64px;border-left:6px solid #7CC0F0;"><div style="width:38px;height:38px;border-radius:12px;border:3px solid #1F1A16;background:#FFFFFF;flex-shrink:0;box-sizing:border-box;"></div><div style="font-size:20px;font-weight:700;flex-grow:1;">Ovos</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><img alt="" src="assets/cat_meat.webp" style="width:29px;height:29px;display:block;"></div></div><div style="display:flex;align-items:center;gap:14px;background:#FFFFFF;border-radius:20px;padding:13px 16px;min-height:64px;border-left:6px solid #7CC0F0;"><div style="width:38px;height:38px;border-radius:12px;border:3px solid #1F1A16;background:#FFFFFF;flex-shrink:0;box-sizing:border-box;"></div><div style="font-size:20px;font-weight:700;flex-grow:1;">Banana</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><img alt="" src="assets/cat_fruit.webp" style="width:29px;height:29px;display:block;"></div></div></div><div style="display:flex;align-items:center;justify-content:space-between;padding:22px 28px 8px 28px;"><div style="font-size:16px;font-weight:800;color:rgba(31,26,22,0.7);text-transform:uppercase;letter-spacing:1px;">Prontos · 3</div></div><div style="padding:0 20px;display:flex;flex-direction:column;gap:8px;"><div style="--i:0;"><div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.55);border-radius:20px;padding:13px 16px;min-height:64px;"><div class="" style="width:38px;height:38px;border-radius:12px;background:#1F1A16;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="-mark" style="display:flex;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div><div style="font-size:20px;font-weight:700;flex-grow:1;color:#8E837A;text-decoration:line-through;">Café</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0.45;"><img alt="" src="assets/cat_beverages.webp" style="width:29px;height:29px;display:block;"></div></div></div><div style="--i:1;"><div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.55);border-radius:20px;padding:13px 16px;min-height:64px;"><div class="" style="width:38px;height:38px;border-radius:12px;background:#1F1A16;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="-mark" style="display:flex;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div><div style="font-size:20px;font-weight:700;flex-grow:1;color:#8E837A;text-decoration:line-through;">Arroz</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0.45;"><img alt="" src="assets/cat_grains_legumes.webp" style="width:29px;height:29px;display:block;"></div></div></div><div style="--i:2;"><div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.55);border-radius:20px;padding:13px 16px;min-height:64px;"><div class="" style="width:38px;height:38px;border-radius:12px;background:#1F1A16;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="-mark" style="display:flex;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div><div style="font-size:20px;font-weight:700;flex-grow:1;color:#8E837A;text-decoration:line-through;">Detergente</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0.45;"><img alt="" src="assets/cat_cleaning.webp" style="width:29px;height:29px;display:block;"></div></div></div></div><div style="position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(to bottom, rgba(255,231,176,0), #D3E8F9 60%);"></div><div style="position:absolute;left:50%;transform:translateX(-50%);bottom:34px;"><div style="height:72px;padding:8px;border-radius:36px;background:#FFFFFF;display:inline-flex;align-items:center;gap:14px;box-shadow:0 12px 28px rgba(80,40,20,0.18);border:1.5px solid rgba(31,26,22,0.12);"><div style="width:56px;height:56px;border-radius:22px;background:#1F1A16;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></div><div style="font-size:18px;font-weight:800;padding-right:22px;white-space:nowrap;display:flex;align-items:center;">Adicionar item<span style="margin-left:-8px;margin-top:-16px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#1F1A16"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5 9.8 12.2 3.5 10l6.3-1.7z"/><path d="M19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9z"/></svg></span></div></div></div></div></div></div></div>
+          <figcaption data-i18n="how_2">Seus itens</figcaption>
+        </figure>
+        <figure class="phone-figure">
+          <div class="phone"><div class="phone__screen"><div class="phone__inner" aria-hidden="true"><div style="width:390px;height:844px;overflow:hidden;position:relative;background:#D3E8F9;"><div style="height:54px;"></div><div style="display:flex;align-items:center;gap:12px;padding:0 20px;height:56px;"><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div><div style="flex-grow:1;min-width:0;text-align:center;font-size:22px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Mercado da semana</div><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#1F1A16"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg></div></div><div style="padding:14px 24px 0 24px;"><div style="display:flex;align-items:center;gap:12px;"><div style="flex-grow:1;height:16px;border-radius:8px;background:rgba(255,255,255,0.7);overflow:hidden;"><div style="width:100%;height:100%;background:#7CC0F0;border-radius:8px;"></div></div><div style="font-size:18px;font-weight:800;white-space:nowrap;">12 de 12</div></div></div><div style="margin:22px 20px 0 20px;background:#FFFFFF;border-radius:28px;padding:26px 22px 22px 22px;display:flex;flex-direction:column;align-items:center;gap:8px;"><img alt="" src="assets/bag.webp" style="width:220px;height:auto;"><div style="font-size:28px;font-weight:800;line-height:32px;text-align:center;margin-top:2px;">Lista Pronta!</div><div style="font-size:16px;font-weight:700;color:#6B5F56;text-align:center;line-height:22px;">12 itens concluídos</div><div style="margin-top:12px;height:52px;padding:0 22px;border-radius:26px;border:3px solid #1F1A16;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v5h-5"/></svg><span>Usar esta lista de novo</span></div></div><div style="display:flex;align-items:center;justify-content:space-between;padding:22px 28px 8px 28px;"><div style="font-size:16px;font-weight:800;color:rgba(31,26,22,0.7);text-transform:uppercase;letter-spacing:1px;">Prontos · 12</div></div><div style="padding:0 20px;display:flex;flex-direction:column;gap:8px;"><div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.55);border-radius:20px;padding:13px 16px;min-height:64px;"><div class="" style="width:38px;height:38px;border-radius:12px;background:#1F1A16;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="-mark" style="display:flex;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div><div style="font-size:20px;font-weight:700;flex-grow:1;color:#8E837A;text-decoration:line-through;">Leite integral</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0.45;"><img alt="" src="assets/cat_dairy.webp" style="width:29px;height:29px;display:block;"></div></div><div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.55);border-radius:20px;padding:13px 16px;min-height:64px;"><div class="" style="width:38px;height:38px;border-radius:12px;background:#1F1A16;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="-mark" style="display:flex;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div><div style="font-size:20px;font-weight:700;flex-grow:1;color:#8E837A;text-decoration:line-through;">Pão de forma</div><div style="width:36px;height:36px;border-radius:50%;background:#F6EFE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0.45;"><img alt="" src="assets/cat_bakery_breakfast.webp" style="width:29px;height:29px;display:block;"></div></div><div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.55);border-radius:20px;padding:13px 16px;min-height:64px;"><div class="" style="width:38px;height:38px;border-radius:12px;background:#1F1A16;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="-mark" style="display:flex;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div><div style="font-size:20px;font-weight:700;flex-grow:1;color:#8E837A;text-decoration:line-through;">Ovos</div></div></div></div></div></div></div>
+          <figcaption data-i18n="how_3">Itens comprados</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- share -->
+  <section class="section feature" id="compartilhar">
+    <div class="section__inner two-col">
+      <div class="text-block">
+        <p class="kicker" data-i18n="share_k">Compartilhe</p>
+        <h2 data-i18n="share_h">Uma lista só, sempre atualizada para todos.</h2>
+        <p class="lead" data-i18n="share_p">Convide pelo link e todo mundo passa a ver a mesma lista, ao vivo. Alguém adicionou ou marcou um item? Aparece na hora no celular de cada um, sem precisar avisar ninguém.</p>
+      </div>
+      <div class="feature__art">
+        <div class="softcard">
+          <span class="tape tape--coral" aria-hidden="true"></span>
+          <div class="listcard__head">
+            <p class="listcard__title" data-i18n="card_title">Mercado da semana</p>
+            <span class="avatar-stack avatar-stack--card" aria-hidden="true">
+              <span class="avatar avatar--thin"><img src="assets/avatars/avatar_01.webp" alt="" width="36" height="36"></span>
+              <span class="avatar avatar--thin"><img src="assets/avatars/avatar_02.webp" alt="" width="36" height="36"></span>
+              <span class="avatar avatar--thin"><img src="assets/avatars/avatar_10.webp" alt="" width="36" height="36"></span>
+              <span class="avatar avatar--thin"><img src="assets/avatars/avatar_03.webp" alt="" width="36" height="36"></span>
+            </span>
+          </div>
+          <p class="section-label" style="padding:0.25rem 0.375rem 0" data-i18n="who">Quem está na lista · 4</p>
+          <ul class="rows" style="list-style:none;margin:0;padding:0">
+            <li class="member">
+              <span class="avatar avatar--flat"><img src="assets/avatars/avatar_01.webp" alt="" width="44" height="44"></span>
+              <span><span class="member__name" data-i18n="you">Você</span><br><span class="member__role" data-i18n="roles.0">Criou a lista</span></span>
+            </li>
+            <li class="member">
+              <span class="avatar avatar--flat"><img src="assets/avatars/avatar_02.webp" alt="" width="44" height="44"></span>
+              <span><span class="member__name">Ana</span><br><span class="member__role" data-i18n="roles.1">Entrou ontem</span></span>
+            </li>
+            <li class="member">
+              <span class="avatar avatar--flat"><img src="assets/avatars/avatar_10.webp" alt="" width="44" height="44"></span>
+              <span><span class="member__name">Beto</span><br><span class="member__role" data-i18n="roles.2">Entrou hoje</span></span>
+            </li>
+            <li class="member">
+              <span class="avatar avatar--flat"><img src="assets/avatars/avatar_03.webp" alt="" width="44" height="44"></span>
+              <span><span class="member__name">Dona Célia</span><br><span class="member__role" data-i18n="roles.3">Entrou hoje</span></span>
+            </li>
+          </ul>
+          <p class="invite-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7L12.5 19.5"/></svg>
+            <span data-i18n="invite">Convidar pelo link</span>
+          </p>
+          <p class="invite-hint" data-i18n="invite_hint">Quem abrir o link entra na lista e vê tudo na hora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------- add items -->
+  <section class="section feature">
+    <div class="section__inner two-col">
+      <div class="text-block">
+        <p class="kicker" data-i18n="add_k">Adicione itens</p>
+        <h2 data-i18n="add_h">Cole uma receita e a IA monta a lista.</h2>
+        <p class="lead" data-i18n="add_p">Cole o texto de uma receita, fale os itens ou tire uma foto da lista de papel: a IA entende, separa os itens e você só confere. Prefere digitar? Duas letras e a sugestão aparece.</p>
+      </div>
+      <div class="feature__art">
+        <div class="softcard">
+          <span class="tape tape--lilac" aria-hidden="true"></span>
+          <p class="composer__field" data-i18n="add_placeholder">O que vamos comprar?</p>
+          <div class="ai-card">
+            <p class="ai-card__title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1A16" aria-hidden="true"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5 9.8 12.2 3.5 10l6.3-1.7z"/><path d="M19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9z"/></svg>
+              <span data-i18n="ai_title">Adicionar com IA</span>
+            </p>
+            <div class="ai-modes">
+              <span class="ai-mode">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9"/></svg>
+                <span data-i18n="ai_text">Colar texto</span>
+              </span>
+              <span class="ai-mode">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+                <span data-i18n="ai_voice">Falar</span>
+              </span>
+              <span class="ai-mode">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+                <span data-i18n="ai_photo">Foto</span>
+              </span>
+            </div>
+          </div>
+          <p class="section-label" style="padding:0.375rem 0.375rem 0" data-i18n="suggested">Sugeridos</p>
+          <div class="chips" data-chips>
+            <span class="chip" data-i18n="chips.0">Leite</span>
+            <span class="chip" data-i18n="chips.1">Pão de forma</span>
+            <span class="chip" data-i18n="chips.2">Ovos</span>
+            <span class="chip" data-i18n="chips.3">Café</span>
+            <span class="chip" data-i18n="chips.4">Arroz</span>
+            <span class="chip" data-i18n="chips.5">Banana</span>
+            <span class="chip" data-i18n="chips.6">Feijão</span>
+            <span class="chip" data-i18n="chips.7">Açúcar</span>
+            <span class="chip" data-i18n="chips.8">Papel toalha</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ details -->
+  <section class="section feature" id="detalhes">
+    <div class="section__inner stack" style="gap:2rem">
+      <div class="text-block text-block--center how__text" style="margin:0 auto">
+        <p class="kicker" data-i18n="det_k">Detalhes</p>
+        <h2 data-i18n="det_h">Quer mais detalhes? A lista acompanha.</h2>
+        <p class="lead" data-i18n="det_p">Adicione quantidade, unidade e preço a cada item. Com os preços ligados, a lista mostra quanto falta, quanto já foi e o total da compra. Toque nos itens para ver.</p>
+      </div>
+
+      <div class="details__grid">
+        <div class="softcard" style="max-width:none">
+          <span class="tape tape--mint" aria-hidden="true"></span>
+
+          <p class="subtotal">
+            <span class="section-label"><span data-i18n="missing">Faltam</span> · <span id="det-n-missing">3</span></span>
+            <span class="subtotal__value" id="det-sum-missing">R$ 31,78</span>
+          </p>
+          <div class="rows" id="det-rows-missing">
+            <div class="row row--detail row--selected" data-det="0" data-checked="false">
+              <button type="button" class="row__check" role="checkbox" aria-checked="false" aria-labelledby="det-name-0">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+              </button>
+              <button type="button" class="row__select" data-select="0">
+                <span class="row__body"><span class="row__name" id="det-name-0">Leite integral</span><span class="row__qty">2 L</span></span>
+                <span class="row__price">R$ 12,98</span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_dairy.webp" alt="" width="29" height="29"></span>
+              </button>
+            </div>
+            <div class="row row--detail" data-det="1" data-checked="false">
+              <button type="button" class="row__check" role="checkbox" aria-checked="false" aria-labelledby="det-name-1">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+              </button>
+              <button type="button" class="row__select" data-select="1">
+                <span class="row__body"><span class="row__name" id="det-name-1">Pão de forma</span><span class="row__qty"></span></span>
+                <span class="row__price">R$ 9,90</span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_bakery_breakfast.webp" alt="" width="29" height="29"></span>
+              </button>
+            </div>
+            <div class="row row--detail" data-det="2" data-checked="false">
+              <button type="button" class="row__check" role="checkbox" aria-checked="false" aria-labelledby="det-name-2">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+              </button>
+              <button type="button" class="row__select" data-select="2">
+                <span class="row__body"><span class="row__name" id="det-name-2">Tomate</span><span class="row__qty">1 kg</span></span>
+                <span class="row__price">R$ 8,90</span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_vegetables.webp" alt="" width="29" height="29"></span>
+              </button>
+            </div>
+          </div>
+
+          <p class="subtotal subtotal--done">
+            <span class="section-label"><span data-i18n="done">Prontos</span> · <span id="det-n-done">2</span></span>
+            <span class="subtotal__value" id="det-sum-done">R$ 43,80</span>
+          </p>
+          <div class="rows" id="det-rows-done">
+            <div class="row row--detail" data-det="3" data-checked="true">
+              <button type="button" class="row__check" role="checkbox" aria-checked="true" aria-labelledby="det-name-3">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+              </button>
+              <button type="button" class="row__select" data-select="3">
+                <span class="row__body"><span class="row__name" id="det-name-3">Café</span><span class="row__qty"></span></span>
+                <span class="row__price">R$ 18,90</span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_beverages.webp" alt="" width="29" height="29"></span>
+              </button>
+            </div>
+            <div class="row row--detail" data-det="4" data-checked="true">
+              <button type="button" class="row__check" role="checkbox" aria-checked="true" aria-labelledby="det-name-4">
+                <span class="row__box" aria-hidden="true"><span class="pop"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></span>
+              </button>
+              <button type="button" class="row__select" data-select="4">
+                <span class="row__body"><span class="row__name" id="det-name-4">Arroz</span><span class="row__qty">5 kg</span></span>
+                <span class="row__price">R$ 24,90</span>
+                <span class="badge" aria-hidden="true"><img src="assets/cat_grains_legumes.webp" alt="" width="29" height="29"></span>
+              </button>
+            </div>
+          </div>
+
+          <p class="total">
+            <span class="total__label" data-i18n="total">Total</span>
+            <span class="total__value" id="det-sum-total">R$ 75,58</span>
+          </p>
+        </div>
+
+        <div class="details__editor-wrap">
+          <div class="editor">
+            <div class="editor__head">
+              <h3 class="editor__title" data-i18n="edit_title">Editar item</h3>
+              <button type="button" class="editor__cat" aria-disabled="true" tabindex="-1">
+                <span class="badge" id="editor-badge" aria-hidden="true"><img src="assets/cat_dairy.webp" alt="" width="35" height="35"></span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B5F56" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                <span class="visually-hidden" data-i18n="category">Categoria</span>
+              </button>
+            </div>
+
+            <label class="visually-hidden" for="editor-name" data-i18n="edit_name_label">Nome do item</label>
+            <input class="editor__name" id="editor-name" type="text" value="Leite integral" autocomplete="off">
+
+            <div class="editor__fields">
+              <label class="field field--qty">
+                <span class="field__label" data-i18n="qty">Qtd.</span>
+                <input class="field__input" id="editor-qty" type="text" inputmode="decimal" value="2" autocomplete="off">
+              </label>
+              <label class="field field--unit">
+                <span class="field__label" data-i18n="unit">Unidade</span>
+                <input class="field__input" id="editor-unit" type="text" value="litros" autocomplete="off">
+              </label>
+              <label class="field field--price">
+                <span class="field__label" data-i18n="price">Preço</span>
+                <input class="field__input" id="editor-price" type="text" inputmode="decimal" value="R$ 6,49" autocomplete="off">
+              </label>
+            </div>
+
+            <button type="button" class="editor__save" id="editor-save" data-i18n="save">Salvar</button>
+
+            <div class="editor__actions">
+              <button type="button" class="editor__cancel" aria-disabled="true" tabindex="-1" data-i18n="cancel">Cancelar</button>
+              <button type="button" class="editor__delete" aria-disabled="true" tabindex="-1">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8372D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>
+                <span data-i18n="delete">Apagar item</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------------------------------------------------- final -->
+  <section class="section final">
+    <div class="section__inner">
+      <div class="final__card">
+        <div class="final__text">
+          <h2 data-i18n="final_h">Pronto para a próxima compra?</h2>
+          <p class="lead" data-i18n="final_p">Grátis para Android.</p>
+          <p class="final__cta">
+            <a class="btn btn--play btn--full" href="https://play.google.com/store/apps/details?id=app.mazarini.listapronta" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M5 3.5v17c0 .8.9 1.3 1.6.9l14-8.5c.6-.4.6-1.3 0-1.7l-14-8.5C5.9 2.2 5 2.7 5 3.5z"/></svg>
+              <span data-i18n="cta">Baixar no Google Play</span>
+            </a>
+          </p>
+        </div>
+        <img class="final__bag" src="assets/bag.webp" alt="" width="300" height="300">
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span class="brand">
+      <img class="brand__mark" src="assets/appicon.webp" alt="" width="44" height="44">
+      <span class="brand__word">Lista Pronta</span>
+    </span>
+    <div class="site-footer__mid">
+      <div class="site-footer__links">
+        <span data-i18n="privacy">Privacidade [em breve]</span>
+        <span data-i18n="terms">Termos de uso [em breve]</span>
+      </div>
+      <div class="langs" role="group" aria-label="Idioma" data-i18n-aria-label="lang_label" data-langs></div>
+    </div>
+    <p class="site-footer__legal">© 2026 Lista Pronta · listapronta.app</p>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
 </body>
 </html>
