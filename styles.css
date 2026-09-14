@@ -180,14 +180,29 @@ h2, .h2 {
   color: var(--ink);
 }
 
-.btn--play {
-  background: var(--ink);
-  color: var(--paper);
-  min-height: 3.75rem;
-  font-size: 1.25rem;
-  padding: 0 1.625rem 0 1.25rem;
+/* Official Google Play badge. Google's artwork is used unmodified and only
+   scaled, as the Play badge guidelines require; the files are the 646x250
+   PNGs from Google under assets/play/. */
+.play-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  flex: 0 0 auto;
 }
-.btn--play:hover { color: var(--paper); background: #2c2520; }
+.play-badge__img {
+  display: block;
+  height: var(--badge-h, 3.75rem);   /* 60px — the height the old CTA pill had */
+  width: auto;
+  max-width: none;                   /* never squeeze Google's artwork */
+}
+.play-badge--sm .play-badge__img { --badge-h: 2.75rem; }
+/* The legacy PNG badge (English) carries much more built-in clear space than
+   the current SVG artwork, so it is scaled up to read at the same size. */
+.play-badge__img[src$=".png"] { height: calc(var(--badge-h, 3.75rem) * 1.625); }
+.play-badge--block { display: flex; width: max-content; margin-inline: auto; }
 
 .btn--ink {
   background: var(--ink);
@@ -293,14 +308,14 @@ h2, .h2 {
 .hero__tag { display: flex; flex-direction: column; align-items: center; gap: 0.875rem; }
 .hero__tag-text { font-size: 1rem; font-weight: 800; color: var(--muted); }
 
-.hero__ctas { display: flex; flex-direction: column; gap: 0.875rem; width: 100%; margin-top: 0.375rem; }
+.hero__ctas { display: flex; flex-direction: column; gap: 0.875rem; width: 100%; margin-top: 0.375rem; align-items: center; }
 .hero__note { font-size: 0.9375rem; font-weight: 700; color: var(--muted); }
 .hero__art { display: flex; justify-content: center; }
 
 @media (min-width: 60rem) {
   .hero__text { gap: 1.625rem; align-items: flex-start; text-align: left; }
   .hero__tag { flex-direction: row; }
-  .hero__ctas { flex-direction: row; flex-wrap: wrap; width: auto; }
+  .hero__ctas { flex-direction: row; flex-wrap: wrap; width: auto; align-items: center; }
   .hero__art { justify-content: flex-end; }
 }
 

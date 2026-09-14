@@ -15,6 +15,7 @@
       nav_label: 'Principal', lang_label: 'Idioma',
       nav_how: 'Como funciona', nav_share: 'Compartilhar',
       cta: 'Baixar no Google Play', cta_short: 'Baixar', see_how: 'Ver como funciona',
+      badge_alt: 'Disponível no Google Play', badge_img: 'google-play-badge-pt-br.svg',
       hero_tag: 'A família toda na mesma lista',
       hero_h: 'A lista de compras que a casa inteira usa junto.',
       hero_p: 'Compartilhe sua lista com família e amigos. Anotem e marquem os itens juntos, de um jeito fácil e conectado.',
@@ -54,6 +55,7 @@
       nav_label: 'Main', lang_label: 'Language',
       nav_how: 'How it works', nav_share: 'Share',
       cta: 'Get it on Google Play', cta_short: 'Get the app', see_how: 'See how it works',
+      badge_alt: 'Get it on Google Play', badge_img: 'google-play-badge-en.png',
       hero_tag: 'The whole family on one list',
       hero_h: 'The shopping list your whole home uses together.',
       hero_p: 'Share your list with family and friends. Add and check off items together, the easy, connected way.',
@@ -93,6 +95,7 @@
       nav_label: 'Principal', lang_label: 'Idioma',
       nav_how: 'Cómo funciona', nav_share: 'Compartir',
       cta: 'Descargar en Google Play', cta_short: 'Descargar', see_how: 'Ver cómo funciona',
+      badge_alt: 'Disponible en Google Play', badge_img: 'google-play-badge-es.svg',
       hero_tag: 'Toda la familia en la misma lista',
       hero_h: 'La lista de compras que toda la casa usa junta.',
       hero_p: 'Comparte tu lista con familia y amigos. Anoten y marquen los productos juntos, de forma fácil y conectada.',
@@ -237,6 +240,13 @@
     $$('[data-i18n-aria-label]').forEach(function (el) {
       var value = lookup(d, el.getAttribute('data-i18n-aria-label'));
       if (value !== null) el.setAttribute('aria-label', value);
+    });
+    $$('[data-i18n-alt]').forEach(function (el) {
+      var value = lookup(d, el.getAttribute('data-i18n-alt'));
+      if (value !== null) el.setAttribute('alt', value);
+    });
+    $$('[data-play-badge]').forEach(function (el) {
+      if (d.badge_img) el.setAttribute('src', (el.getAttribute('data-badge-base') || '') + d.badge_img);
     });
     document.documentElement.setAttribute('lang', d.lang);
     if (d.title) document.title = d.title;
