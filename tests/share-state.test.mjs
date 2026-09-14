@@ -192,19 +192,23 @@ test('a good token still goes through the API mapping', () => {
 /* ------------------------------------------------------------- messages */
 
 test('the invitation sentence is split into plain text parts', () => {
-  const parts = messageParts('João', 'Churrasco');
+  const parts = messageParts('João');
   assert.deepEqual(parts, [
-    { text: 'João compartilhou a lista ', strong: false },
-    { text: 'Churrasco', strong: true },
-    { text: ' com você', strong: false }
+    { text: 'João', strong: true },
+    { text: ' compartilhou uma lista com você', strong: false }
   ]);
-  assert.equal(parts.map((p) => p.text).join(''), 'João compartilhou a lista Churrasco com você');
+  assert.equal(parts.map((p) => p.text).join(''), 'João compartilhou uma lista com você');
+});
+
+test('the sentence never repeats the list name — the chip below carries it', () => {
+  const joined = messageParts('João').map((p) => p.text).join('');
+  assert.equal(joined.includes('Churrasco'), false);
+  assert.equal(messageParts('João', 'Churrasco').map((p) => p.text).join(''), joined);
 });
 
 test('message parts never carry markup — the page renders them as text', () => {
-  const parts = messageParts('<img src=x onerror=alert(1)>', '</strong><script>');
-  assert.equal(parts[0].text, '<img src=x onerror=alert(1)> compartilhou a lista ');
-  assert.equal(parts[1].text, '</strong><script>');
+  const parts = messageParts('<img src=x onerror=alert(1)>');
+  assert.equal(parts[0].text, '<img src=x onerror=alert(1)>');
   parts.forEach((p) => assert.equal(typeof p.text, 'string'));
 });
 

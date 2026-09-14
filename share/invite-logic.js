@@ -134,18 +134,20 @@ export function resolveState(token, result) {
 }
 
 const MESSAGE = {
-  pt: { before: ' compartilhou a lista ', after: ' com você' }
+  pt: { after: ' compartilhou uma lista com você' }
 };
 
 /**
  * The invitation sentence split into plain-text parts, so the page can build it
  * with createTextNode and never put server values through innerHTML.
+ *
+ * The list name is deliberately absent: it is already shown in the chip right
+ * below the sentence, so repeating it made the headline long for no gain.
  */
-export function messageParts(ownerName, listName) {
+export function messageParts(ownerName) {
   const copy = MESSAGE.pt;
   return [
-    { text: String(ownerName) + copy.before, strong: false },
-    { text: String(listName), strong: true },
+    { text: String(ownerName), strong: true },
     { text: copy.after, strong: false }
   ];
 }
