@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Convite — Lista Pronta</title>
+<meta name="description" content="Alguém compartilhou uma lista de compras com você no Lista Pronta.">
+<meta name="theme-color" content="#D4EFDA">
+<link rel="icon" href="../assets/appicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="../assets/appicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="share-page" data-state="loading">
+
+<header class="share-topbar">
+  <a class="brand" href="/">
+    <img class="brand__mark" src="../assets/appicon.webp" alt="" width="48" height="48">
+    <span class="brand__word">Lista Pronta</span>
+  </a>
+  <span class="share-topbar__host">listapronta.app</span>
+</header>
+
+<div class="share-brand">
+  <a class="brand" href="/">
+    <img class="brand__mark" src="../assets/appicon.webp" alt="" width="36" height="36">
+    <span class="brand__word">Lista Pronta</span>
+  </a>
+</div>
+
+<main class="share-main">
+  <p id="share-status" class="visually-hidden" role="status" aria-live="polite">Abrindo seu convite…</p>
+
+  <div class="share-layout">
+
+    <div class="share-layout__art" id="art">
+      <div class="bag-hero bag-hero--loading" id="bag-hero">
+        <span class="bag-hero__disc" aria-hidden="true"></span>
+        <img class="bag-hero__bag" src="../assets/bag.webp" alt="" width="250" height="250">
+        <span class="bag-hero__skeleton" id="bag-skeleton" aria-hidden="true"></span>
+        <span class="avatar bag-hero__avatar" id="owner-avatar" hidden><img id="owner-avatar-img" src="../assets/avatars/avatar_01.webp" alt="" width="84" height="84"></span>
+      </div>
+    </div>
+
+    <div class="share-layout__panel">
+
+      <!-- ------------------------------------------------------ loading -->
+      <section id="state-loading" class="loading-block" aria-label="Carregando">
+        <span class="spinner" aria-hidden="true"></span>
+        <p class="loading-block__title">Abrindo seu convite…</p>
+        <div class="skeleton" aria-hidden="true">
+          <span class="skeleton__bar skeleton__bar--a"></span>
+          <span class="skeleton__bar skeleton__bar--b"></span>
+          <span class="skeleton__bar skeleton__bar--c"></span>
+        </div>
+      </section>
+
+      <!-- -------------------------------------------------------- valid -->
+      <section id="state-valid" hidden>
+        <p class="share-kicker">Convite para uma lista</p>
+        <div class="share-head">
+          <h1 class="share-msg" id="share-msg"></h1>
+          <div class="share-meta">
+          <span class="list-chip">
+            <span class="list-chip__dot" aria-hidden="true"></span>
+            <span class="list-chip__name" id="list-name"></span>
+          </span>
+          <span class="members-line" id="members-line" hidden>
+            <span class="avatar" id="members-avatar"><img id="members-avatar-img" src="../assets/avatars/avatar_01.webp" alt="" width="36" height="36"></span>
+            <span class="members-line__text" id="members-text"></span>
+          </span>
+          </div>
+        </div>
+
+        <div class="share-body">
+          <div class="can-card">
+            <p class="can-card__title">Depois de entrar você pode</p>
+            <ul class="can-list">
+              <li><span class="can-list__tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>Adicionar e remover itens</li>
+              <li><span class="can-list__tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>Marcar e desmarcar o que já foi comprado</li>
+              <li><span class="can-list__tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>Ver a lista sempre atualizada</li>
+            </ul>
+          </div>
+
+          <p class="free-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>
+            <span>Entrar é grátis. Criar a conta também. Sem assinatura, sem pagamento.</span>
+          </p>
+
+          <div class="cta-block">
+            <a class="play-badge play-badge--block" id="cta-play" href="https://play.google.com/store/apps/details?id=app.mazarini.listapronta" rel="noopener">
+              <img class="play-badge__img" src="../assets/play/google-play-badge-pt-br.svg" alt="Disponível no Google Play">
+            </a>
+          </div>
+
+          <p class="desktop-note">O Lista Pronta é um app para celular. No computador, use o link para instalar no seu Android ou abra o convite no telefone.</p>
+        </div>
+      </section>
+
+      <!-- -------------------------------------------------------- error -->
+      <section id="state-error" hidden>
+        <div class="papercard">
+          <div class="papercard__front">
+            <span class="tape tape--coral" aria-hidden="true"></span>
+            <div class="state-card">
+              <span class="state-card__icon" id="icon-invalid" aria-hidden="true" hidden><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7L12.5 19.5"/><path d="M4 4l16 16"/></svg></span>
+              <span class="state-card__icon" id="icon-offline" aria-hidden="true" hidden><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1F1A16" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .8-7.9A6 6 0 0 0 6.5 9"/><path d="M4.5 11.5A4 4 0 0 0 7 18"/><path d="M4 4l16 16"/></svg></span>
+              <img class="state-card__img" id="icon-gone" src="../assets/emptybag.webp" alt="" width="120" height="120" hidden>
+              <h1 class="state-card__title" id="error-title"></h1>
+              <p class="state-card__body" id="error-body"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="share-body">
+          <p class="state-note" id="error-note" hidden>Enquanto isso, o Lista Pronta é grátis para você criar e compartilhar as suas próprias listas.</p>
+          <div class="cta-block">
+            <button type="button" class="btn btn--ink btn--full" id="cta-retry" hidden>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v5h-5"/></svg>
+              <span>Tentar de novo</span>
+            </button>
+            <a class="play-badge play-badge--block" id="cta-play-error" href="https://play.google.com/store/apps/details?id=app.mazarini.listapronta" rel="noopener">
+              <img class="play-badge__img" src="../assets/play/google-play-badge-pt-br.svg" alt="Disponível no Google Play">
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <noscript>
+        <div class="share-body">
+          <p class="state-note">Este convite precisa de JavaScript para ser aberto. Ative o JavaScript e recarregue a página, ou instale o Lista Pronta e abra o link no celular.</p>
+          <p class="cta-block">
+            <a class="play-badge play-badge--block" href="https://play.google.com/store/apps/details?id=app.mazarini.listapronta" rel="noopener">
+              <img class="play-badge__img" src="../assets/play/google-play-badge-pt-br.svg" alt="Disponível no Google Play">
+            </a>
+          </p>
+        </div>
+      </noscript>
+
+    </div>
+  </div>
+</main>
+
+<p class="share-footer">listapronta.app · Privacidade [em breve] · Termos [em breve]</p>
+
+<script type="module" src="share.js"></script>
+</body>
+</html>
