@@ -79,7 +79,7 @@ function wirePlayButtons() {
 function renderValid(data) {
   // message: built from text nodes, never innerHTML
   ui.msg.textContent = '';
-  messageParts(data.ownerName, data.listName).forEach((part) => {
+  messageParts(data.ownerName).forEach((part) => {
     if (part.strong) {
       const strong = document.createElement('strong');
       strong.appendChild(document.createTextNode(part.text));
