@@ -6,10 +6,10 @@ import assert from 'node:assert/strict';
 
 import {
   EMAIL_RE, DETAILS_MAX, EMAIL_MAX, SCOPES, LANGS,
-  isValidEmail, validateForm, mapApiResult, stateFromNetworkError, pickLang
+  isValidEmail, validateForm, pickLang,
+  buildSubject, buildBody, buildMailtoUrl, composeMail
 } from '../delete-account/request-logic.js';
 import { COPY, CONTACT_EMAIL } from '../delete-account/copy.js';
-import { REQUEST_URLS, requestUrl } from '../delete-account/config.js';
 
 /* --------------------------------------------------------------- e-mail */
 
@@ -34,8 +34,7 @@ test('a non-string is refused rather than thrown at', () => {
 });
 
 test('an address longer than the field limit is refused', () => {
-  const long = 'a'.repeat(EMAIL_MAX) + '@exemplo.com';
-  assert.equal(isValidEmail(long), false);
+  assert.equal(isValidEmail('a'.repeat(EMAIL_MAX) + '@exemplo.com'), false);
 });
 
 test('the regex is anchored, so it cannot match inside a longer string', () => {
@@ -45,7 +44,7 @@ test('the regex is anchored, so it cannot match inside a longer string', () => {
 
 /* ------------------------------------------------------------ validation */
 
-test('a complete form returns the payload, trimmed', () => {
+test('a complete form returns the values, trimmed', () => {
   const result = validateForm({ email: ' alguem@exemplo.com ', scope: 'account', details: '  urgente  ' });
   assert.deepEqual(result, { ok: true, value: { email: 'alguem@exemplo.com', scope: 'account', details: 'urgente' } });
 });
@@ -62,13 +61,13 @@ test('a missing e-mail is reported before anything else', () => {
 });
 
 test('an invalid e-mail is reported before the scope', () => {
-  const result = validateForm({ email: 'nope', scope: 'nonsense', details: '' });
-  assert.deepEqual(result, { ok: false, field: 'email', error: 'email_invalid' });
+  assert.deepEqual(validateForm({ email: 'nope', scope: 'nonsense', details: '' }),
+    { ok: false, field: 'email', error: 'email_invalid' });
 });
 
 test('a scope outside the allow-list is refused', () => {
-  const result = validateForm({ email: 'alguem@exemplo.com', scope: 'everything', details: '' });
-  assert.deepEqual(result, { ok: false, field: 'scope', error: 'scope_invalid' });
+  assert.deepEqual(validateForm({ email: 'alguem@exemplo.com', scope: 'everything', details: '' }),
+    { ok: false, field: 'scope', error: 'scope_invalid' });
 });
 
 test('details over the cap are refused, exactly at the boundary', () => {
@@ -91,30 +90,73 @@ test('both documented scopes validate', () => {
   }
 });
 
-/* ---------------------------------------------------------- API mapping */
+/* ------------------------------------------------------- the message itself */
 
-test('only a 200 that says "received" counts as sent', () => {
-  assert.equal(mapApiResult(200, { status: 'received' }), 'sent');
-});
+const VALUE = { email: 'alguem@exemplo.com', scope: 'account', details: 'quero agora' };
 
-test('a 200 with an unexpected body is a failure, never a silent success', () => {
-  assert.equal(mapApiResult(200, { status: 'queued' }), 'failed');
-  assert.equal(mapApiResult(200, {}), 'failed');
-  assert.equal(mapApiResult(200, null), 'failed');
-});
-
-test('rate limiting has its own state', () => {
-  assert.equal(mapApiResult(429, { error: 'rate-limited' }), 'rate_limited');
-});
-
-test('every other status is a failure', () => {
-  for (const status of [400, 403, 405, 500, 502, 0]) {
-    assert.equal(mapApiResult(status, null), 'failed', String(status));
+test('the subject has one fixed shape in every language, so one filter catches all of them', () => {
+  const expected = '[Lista Pronta] Deletion request — alguem@exemplo.com';
+  for (const lang of LANGS) {
+    assert.equal(composeMail(CONTACT_EMAIL, VALUE, COPY[lang]).subject, expected, lang);
   }
 });
 
-test('a thrown fetch is offline, not sent', () => {
-  assert.equal(stateFromNetworkError(), 'offline');
+test('the body carries the address, the choice and the notes', () => {
+  const body = buildBody(VALUE, COPY.pt);
+  assert.match(body, /alguem@exemplo\.com/);
+  assert.match(body, /Minha conta e todos os meus dados/);
+  assert.match(body, /quero agora/);
+});
+
+test('the body names whichever of the two choices was made', () => {
+  assert.match(buildBody({ ...VALUE, scope: 'data' }, COPY.en), /Only some data/);
+  assert.match(buildBody({ ...VALUE, scope: 'account' }, COPY.en), /My account and all of my data/);
+});
+
+test('empty notes read as "none" rather than as a blank line', () => {
+  assert.match(buildBody({ ...VALUE, details: '' }, COPY.pt), /\(nenhuma\)/);
+  assert.match(buildBody({ ...VALUE, details: '' }, COPY.en), /\(none\)/);
+  assert.match(buildBody({ ...VALUE, details: '' }, COPY.es), /\(ninguna\)/);
+});
+
+test('the body is written in the language the visitor is reading', () => {
+  assert.match(buildBody(VALUE, COPY.pt), /Quero pedir a exclusão/);
+  assert.match(buildBody(VALUE, COPY.en), /I would like to request/);
+  assert.match(buildBody(VALUE, COPY.es), /Quiero solicitar/);
+});
+
+test('the mailto goes to the published address', () => {
+  assert.equal(composeMail(CONTACT_EMAIL, VALUE, COPY.pt).url.startsWith('mailto:mazariniapp@gmail.com?'), true);
+});
+
+test('the subject and body are percent-encoded, so no field can inject a header', () => {
+  const url = buildMailtoUrl('a@b.co', 'x', 'line one\nline two');
+  assert.match(url, /body=line%20one%0Aline%20two/);
+  assert.equal(url.includes('\n'), false, 'a raw newline would let a value forge a header');
+});
+
+test('characters that mail clients disagree about are encoded too', () => {
+  const url = buildMailtoUrl('a@b.co', "it's (that)!", '*');
+  for (const raw of ["'", '(', ')', '!', '*']) {
+    assert.equal(url.includes(raw), false, `${raw} was left raw`);
+  }
+});
+
+test('an ampersand in the notes cannot add a mailto parameter', () => {
+  const url = composeMail(CONTACT_EMAIL, { ...VALUE, details: '&cc=someone@else.com' }, COPY.pt).url;
+  assert.equal(url.includes('&cc='), false);
+  assert.match(url, /%26cc%3D/);
+});
+
+test('the round trip decodes back to what was composed', () => {
+  const mail = composeMail(CONTACT_EMAIL, VALUE, COPY.pt);
+  const params = new URLSearchParams(mail.url.slice(mail.url.indexOf('?') + 1));
+  assert.equal(params.get('subject'), mail.subject);
+  assert.equal(params.get('body'), mail.body);
+});
+
+test('buildSubject is what composeMail uses', () => {
+  assert.equal(composeMail(CONTACT_EMAIL, VALUE, COPY.pt).subject, buildSubject(VALUE));
 });
 
 /* ------------------------------------------------------------- language */
@@ -149,8 +191,7 @@ test('list copy is an array of the same length in every language', () => {
 test('no copy string is left empty', () => {
   for (const lang of LANGS) {
     for (const [key, value] of Object.entries(COPY[lang])) {
-      const values = Array.isArray(value) ? value : [value];
-      for (const entry of values) {
+      for (const entry of Array.isArray(value) ? value : [value]) {
         assert.equal(typeof entry, 'string', `${lang}.${key} is not a string`);
         assert.ok(entry.trim().length > 0, `${lang}.${key} is empty`);
       }
@@ -159,18 +200,16 @@ test('no copy string is left empty', () => {
 });
 
 test('there is an error string for every validation error the logic can return', () => {
-  const errors = ['email_required', 'email_invalid', 'scope_invalid', 'details_long'];
   for (const lang of LANGS) {
-    for (const error of errors) {
+    for (const error of ['email_required', 'email_invalid', 'scope_invalid', 'details_long']) {
       assert.ok(COPY[lang]['err_' + error], `${lang} is missing err_${error}`);
     }
   }
 });
 
-test('there is copy for every state the page can render', () => {
-  const states = { sent: 'sent_h', failed: 'fail_h', offline: 'offline_h', rate_limited: 'rate_h' };
+test('there is copy for the one panel the page can show, and for the message', () => {
   for (const lang of LANGS) {
-    for (const key of Object.values(states)) {
+    for (const key of ['opened_h', 'opened_p', 'opened_note', 'opened_again', 'mail_intro', 'mail_none']) {
       assert.ok(COPY[lang][key], `${lang} is missing ${key}`);
     }
   }
@@ -180,29 +219,11 @@ test('the contact address is the one published in the policy', () => {
   assert.equal(CONTACT_EMAIL, 'mazariniapp@gmail.com');
 });
 
-/* --------------------------------------------------------------- config */
-
-test('the endpoint is chosen by environment, and prod is the default', () => {
-  assert.equal(requestUrl({ search: '', hostname: 'listapronta.app' }), REQUEST_URLS.prod);
-  assert.equal(requestUrl({ search: '?env=dev', hostname: 'listapronta.app' }), REQUEST_URLS.dev);
-  assert.equal(requestUrl({ search: '?env=emulator', hostname: 'localhost' }), REQUEST_URLS.emulator);
-  assert.equal(requestUrl({ search: '', hostname: 'localhost' }), REQUEST_URLS.dev);
-});
-
-test('no location at all counts as local, the same as the invitation page', () => {
-  // pickEnv treats an empty hostname as localhost, so a module imported outside a browser
-  // resolves to dev rather than quietly pointing test runs at the production backend.
-  assert.equal(requestUrl(null), REQUEST_URLS.dev);
-});
-
-test('every endpoint points at the same function name and region', () => {
-  for (const [env, url] of Object.entries(REQUEST_URLS)) {
-    assert.ok(url.endsWith('/submitDeletionRequest'), `${env} does not end in the function name`);
-    assert.ok(url.includes('southamerica-east1'), `${env} is not in the São Paulo region`);
+test('no copy promises that the page itself sent anything', () => {
+  // The page cannot know: only the visitor's own mail app can send the message.
+  for (const lang of LANGS) {
+    for (const key of ['opened_h', 'opened_p', 'opened_note']) {
+      assert.doesNotMatch(COPY[lang][key], /recebid|received|recibid/i, `${lang}.${key} claims receipt`);
+    }
   }
-});
-
-test('the live endpoint is https and points at the prod project', () => {
-  assert.ok(REQUEST_URLS.prod.startsWith('https://'));
-  assert.ok(REQUEST_URLS.prod.includes('listapronta-prod'));
 });

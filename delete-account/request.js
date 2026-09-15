@@ -1,14 +1,16 @@
 /* Deletion-request page — DOM only. Every decision lives in request-logic.js.
    Values are written with textContent, never innerHTML.
 
+   The form does one thing: it composes an e-mail and hands it to the visitor's own mail app. There
+   is no endpoint and no network call, so nothing about a request exists anywhere until the person
+   presses send in their own client.
+
    Progressive enhancement, same contract as the rest of the site: the form starts `hidden` in the
    markup and only this script reveals it. With no JS — or if this module fails to load — the page
-   still explains the in-app route and shows the e-mail address, so the person is never left
-   without a way to ask. */
+   still explains the in-app route and shows the address, so nobody is left without a way to ask. */
 
-import { validateForm, mapApiResult, stateFromNetworkError, pickLang, LANG_STORE_KEY } from './request-logic.js';
-import { COPY } from './copy.js';
-import { REQUEST_URL, REQUEST_TIMEOUT_MS } from './config.js';
+import { validateForm, composeMail, pickLang, LANG_STORE_KEY } from './request-logic.js';
+import { COPY, CONTACT_EMAIL } from './copy.js';
 
 const el = (id) => document.getElementById(id);
 const all = (selector) => Array.prototype.slice.call(document.querySelectorAll(selector));
@@ -78,8 +80,8 @@ function applyCopy() {
     button.setAttribute('aria-pressed', button.getAttribute('data-lang') === lang ? 'true' : 'false');
   });
 
-  // A visible result or error was written in the previous language; re-render it.
-  if (shownState) renderState(shownState);
+  // A visible panel or error was written in the previous language; re-render it.
+  if (panelShown) renderPanel();
   if (shownError) showError(shownError.field, shownError.key);
 }
 
@@ -131,51 +133,33 @@ function showError(field, key) {
   }
 }
 
-/* --------------------------------------------------------------------- state */
+/* --------------------------------------------------------------------- panel */
 
-let shownState = null;
+let panelShown = false;
 
-const STATE_COPY = {
-  sent: { title: 'sent_h', body: 'sent_p', note: 'sent_note', action: 'sent_again' },
-  failed: { title: 'fail_h', body: 'fail_p', action: 'retry' },
-  offline: { title: 'offline_h', body: 'offline_p', action: 'retry' },
-  rate_limited: { title: 'rate_h', body: 'rate_p', action: 'retry' }
-};
-
-function renderState(state) {
-  const copy = STATE_COPY[state];
-  if (!copy) return;
-  shownState = state;
-
-  ui.stateTitle.textContent = t(copy.title);
-  ui.stateBody.textContent = t(copy.body);
-
-  if (copy.note) {
-    ui.stateNote.textContent = t(copy.note);
-    ui.stateNote.hidden = false;
-  } else {
-    ui.stateNote.hidden = true;
-  }
-
-  ui.stateAction.textContent = t(copy.action);
+/**
+ * The one panel there is. It never claims the request was sent — only the person's own mail app can
+ * do that — so it says what is left to do and what to try if nothing opened.
+ */
+function renderPanel() {
+  panelShown = true;
+  ui.stateTitle.textContent = t('opened_h');
+  ui.stateBody.textContent = t('opened_p');
+  ui.stateNote.textContent = t('opened_note');
+  ui.stateNote.hidden = false;
+  ui.stateAction.textContent = t('opened_again');
   ui.stateAction.hidden = false;
-
-  ui.state.dataset.state = state;
+  ui.state.dataset.state = 'opened';
   ui.state.hidden = false;
   ui.form.hidden = true;
 }
 
 function backToForm() {
-  shownState = null;
+  panelShown = false;
   ui.state.hidden = true;
   ui.form.hidden = false;
   clearErrors();
   ui.email.focus();
-}
-
-function resetForm() {
-  ui.form.reset();
-  backToForm();
 }
 
 /* -------------------------------------------------------------------- submit */
@@ -185,31 +169,10 @@ function selectedScope() {
   return checked ? checked.value : '';
 }
 
-async function post(payload) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-  try {
-    const response = await fetch(REQUEST_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: controller.signal
-    });
-    let body = null;
-    try { body = await response.json(); } catch (e) { body = null; }
-    return mapApiResult(response.status, body);
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-let sending = false;
-
-async function onSubmit(event) {
+function onSubmit(event) {
   event.preventDefault();
-  if (sending) return;
-
   clearErrors();
+
   const result = validateForm({
     email: ui.email.value,
     scope: selectedScope(),
@@ -221,22 +184,10 @@ async function onSubmit(event) {
     return;
   }
 
-  sending = true;
-  ui.submit.disabled = true;
-  ui.submit.textContent = t('submitting');
-
-  let state;
-  try {
-    state = await post(result.value);
-  } catch (error) {
-    state = stateFromNetworkError();
-  } finally {
-    sending = false;
-    ui.submit.disabled = false;
-    ui.submit.textContent = t('submit');
-  }
-
-  renderState(state);
+  const mail = composeMail(CONTACT_EMAIL, result.value, COPY[lang]);
+  // Assigning location is what opens the mail app; the page itself does not navigate away.
+  window.location.href = mail.url;
+  renderPanel();
 }
 
 /* ---------------------------------------------------------------------- boot */
@@ -245,7 +196,4 @@ buildPills();
 applyCopy();
 ui.form.hidden = false;
 ui.form.addEventListener('submit', onSubmit);
-ui.stateAction.addEventListener('click', () => {
-  if (shownState === 'sent') resetForm();
-  else backToForm();
-});
+ui.stateAction.addEventListener('click', backToForm);
