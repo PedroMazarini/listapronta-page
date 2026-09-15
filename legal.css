@@ -1,0 +1,236 @@
+/* Lista Pronta — styles for the legal pages (/privacy/, /terms/).
+   Loaded after styles.css; reuses its tokens. Plain CSS, no build step. */
+
+.legal { padding-top: 2rem; padding-bottom: 4rem; }
+
+@media (min-width: 60rem) {
+  .legal { padding-top: 3rem; padding-bottom: 6rem; }
+}
+
+.legal__inner { max-width: 48rem; margin: 0 auto; }
+
+.legal__sheet {
+  background: var(--paper);
+  border-radius: 1.5rem;
+  box-shadow: var(--card-shadow-lg);
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .legal__sheet { padding: 3rem 3.25rem 3.5rem; }
+}
+
+.legal__kicker {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.legal__title {
+  margin-top: 0.5rem;
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 48rem) {
+  .legal__title { font-size: 2.5rem; }
+}
+
+.legal__meta {
+  margin-top: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.legal__lead {
+  margin-top: 1.5rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* table of contents */
+.legal__toc {
+  margin-top: 2rem;
+  padding: 1.25rem 1.375rem;
+  background: var(--soft);
+  border-radius: 1rem;
+}
+
+.legal__toc h2 {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.legal__toc ol {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+  columns: 1;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+@media (min-width: 40rem) {
+  .legal__toc ol { columns: 2; column-gap: 2rem; }
+}
+
+.legal__toc li { break-inside: avoid; }
+.legal__toc a { color: var(--muted); text-decoration: none; font-weight: 700; }
+.legal__toc a:hover { color: var(--ink); text-decoration: underline; }
+
+/* prose */
+.prose { margin-top: 2.25rem; }
+
+.prose h2 {
+  margin-top: 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.3;
+  scroll-margin-top: 1.5rem;
+}
+
+.prose h3 {
+  margin-top: 1.75rem;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin-top: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.prose ul,
+.prose ol { padding-left: 1.25rem; }
+
+.prose li { margin-top: 0.5rem; }
+
+.prose li::marker { color: var(--faint); }
+
+.prose strong { color: var(--ink); font-weight: 800; }
+
+.prose a { color: var(--ink); font-weight: 700; }
+
+.prose hr {
+  margin-top: 2.5rem;
+  border: 0;
+  border-top: 2px solid var(--line);
+}
+
+/* definition-style rows used for the "what we collect" blocks */
+.legal-table {
+  margin-top: 1.25rem;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.legal-table th,
+.legal-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal-table th {
+  color: var(--ink);
+  font-weight: 800;
+  width: 38%;
+}
+
+.legal-table thead th {
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--faint);
+  border-bottom: 2px solid var(--line);
+}
+
+.legal-table__scroll { overflow-x: auto; }
+
+/* highlighted callout */
+.legal-note {
+  margin-top: 1.5rem;
+  padding: 1.125rem 1.25rem;
+  background: var(--badge-bg);
+  border-left: 6px solid var(--butter);
+  border-radius: 0 1rem 1rem 0;
+}
+
+.legal-note p { margin-top: 0; color: var(--ink); }
+.legal-note p + p { margin-top: 0.625rem; }
+
+/* key-points list at the top */
+.legal-points {
+  margin-top: 1.5rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.legal-points li {
+  margin: 0;
+  padding: 0.875rem 1rem 0.875rem 2.75rem;
+  position: relative;
+  background: var(--soft);
+  border-radius: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.legal-points li::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.125rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: var(--mint);
+}
+
+/* footer of the legal pages */
+.legal-foot {
+  max-width: 48rem;
+  margin: 1.75rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.legal-foot a { color: var(--muted); text-decoration: none; }
+.legal-foot a:hover { color: var(--ink); text-decoration: underline; }
+
+.legal-foot__legal { color: var(--faint); font-weight: 600; }
+
+/* the header language pills sit on their own row on this page */
+.legal-header__langs { display: flex; justify-content: flex-end; }
