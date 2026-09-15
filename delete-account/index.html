@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excluir sua conta e seus dados — Lista Pronta</title>
+<meta name="description" content="Peça a exclusão da sua conta do Lista Pronta e de todos os seus dados, pelo aplicativo ou por esta página.">
+<meta name="theme-color" content="#D3E8F9">
+<link rel="icon" href="/assets/appicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="/assets/appicon.webp">
+<link rel="canonical" href="https://listapronta.app/delete-account/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excluir sua conta e seus dados — Lista Pronta">
+<meta property="og:description" content="Peça a exclusão da sua conta do Lista Pronta e de todos os seus dados.">
+<meta property="og:url" content="https://listapronta.app/delete-account/">
+<meta property="og:image" content="https://listapronta.app/assets/appicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/legal.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <img class="brand__mark" src="/assets/appicon.webp" alt="" width="48" height="48">
+      <span class="brand__word">Lista Pronta</span>
+    </a>
+    <div class="langs" role="group" aria-label="Idioma" data-i18n-aria-label="lang_label" data-langs></div>
+  </div>
+</header>
+
+<main class="section legal">
+  <div class="legal__inner">
+    <article class="legal__sheet">
+
+      <p class="legal__kicker" data-i18n="kicker">Lista Pronta</p>
+      <h1 class="legal__title" data-i18n="h1">Excluir sua conta e seus dados</h1>
+      <p class="legal__lead" data-i18n="lead">Você pode apagar sua conta do Lista Pronta a qualquer momento, pelo aplicativo ou por esta página. Não é preciso ter o app instalado para pedir.</p>
+
+      <div class="prose">
+
+        <h2 data-i18n="inapp_h">No aplicativo (mais rápido)</h2>
+        <p data-i18n="inapp_p">Se você ainda tem o Lista Pronta instalado e consegue entrar na sua conta, este é o caminho mais direto:</p>
+        <ol data-i18n-list="inapp_steps">
+          <li>Abra o Lista Pronta e entre na sua conta.</li>
+          <li>Toque no seu avatar para abrir o Perfil.</li>
+          <li>Toque em “Excluir conta” e confirme.</li>
+        </ol>
+
+        <h2 data-i18n="web_h">Por esta página</h2>
+        <p data-i18n="web_p">Use o formulário abaixo se você desinstalou o aplicativo, perdeu o acesso ao aparelho ou prefere pedir por escrito. Pedimos apenas o e-mail da conta para localizá-la.</p>
+
+        <h2 data-i18n="what_h">O que acontece</h2>
+
+        <h3 data-i18n="deleted_h">O que é apagado</h3>
+        <ul data-i18n-list="deleted">
+          <li>Seu perfil: nome, avatar, e-mail e provedor de acesso.</li>
+          <li>As listas que pertencem a você e todos os itens delas.</li>
+          <li>Sua participação nas listas de outras pessoas.</li>
+          <li>O estado da sua assinatura e a contagem de importações com IA.</li>
+        </ul>
+
+        <h3 data-i18n="kept_h">O que permanece</h3>
+        <ul data-i18n-list="kept">
+          <li>Itens que você adicionou a listas de outras pessoas: eles fazem parte do conteúdo compartilhado daquelas listas. Seu nome e seu avatar deixam de aparecer.</li>
+          <li>Contadores agregados de termos digitados, que não identificam ninguém.</li>
+          <li>Registros que a lei nos obrigue a guardar, pelo prazo exigido.</li>
+        </ul>
+
+        <h3 data-i18n="when_h">Quando</h3>
+        <p data-i18n="when_p">A conta é desativada e some do aplicativo assim que o pedido é aceito. Se você entrar de novo em até 30 dias, tudo volta como estava. Depois desse prazo, os dados são apagados definitivamente. Se preferir a exclusão imediata, diga isso no campo de observações.</p>
+
+      </div>
+
+      <!-- ============================================================== the form -->
+      <section class="req" aria-labelledby="req-title">
+        <h2 class="req__title" id="req-title" data-i18n="form_h">Pedir a exclusão</h2>
+
+        <form class="req__form" id="req-form" novalidate hidden>
+          <div class="req-field">
+            <label class="req-field__label" for="req-email" data-i18n="label_email">E-mail da conta</label>
+            <p class="req-field__hint" id="req-email-hint" data-i18n="hint_email">O e-mail com que você entra no Lista Pronta.</p>
+            <input class="req-field__input" id="req-email" name="email" type="email" inputmode="email"
+                   autocomplete="email" maxlength="254" aria-describedby="req-email-hint"
+                   required>
+            <p class="req-field__error" id="req-email-error" hidden></p>
+          </div>
+
+          <fieldset class="req-field req-field--group">
+            <legend class="req-field__label" data-i18n="label_scope">O que você quer apagar</legend>
+            <label class="choice">
+              <input type="radio" name="scope" value="account" checked>
+              <span class="choice__text" data-i18n="scope_account">Minha conta e todos os meus dados</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="scope" value="data">
+              <span class="choice__text" data-i18n="scope_data">Apenas alguns dados (explique abaixo)</span>
+            </label>
+            <p class="req-field__error" id="req-scope-error" hidden></p>
+          </fieldset>
+
+          <div class="req-field">
+            <label class="req-field__label" for="req-details" data-i18n="label_details">Observações (opcional)</label>
+            <p class="req-field__hint" id="req-details-hint" data-i18n="hint_details">Se escolheu apagar apenas alguns dados, diga quais. Se quer a exclusão imediata, sem os 30 dias, diga aqui.</p>
+            <textarea class="req-field__input req-field__input--area" id="req-details" name="details" rows="4"
+                      maxlength="1000" aria-describedby="req-details-hint"></textarea>
+            <p class="req-field__error" id="req-details-error" hidden></p>
+          </div>
+
+          <button class="btn btn--ink btn--full" id="req-submit" type="submit" data-i18n="submit">Enviar pedido</button>
+        </form>
+
+        <!-- Result states, all hidden until the form answers. -->
+        <div class="req__state" id="req-state" role="status" aria-live="polite" hidden>
+          <h3 class="req__state-title" id="req-state-title"></h3>
+          <p class="req__state-body" id="req-state-body"></p>
+          <p class="req__state-note" id="req-state-note" hidden></p>
+          <button class="btn btn--outline btn--full" id="req-state-action" type="button" hidden></button>
+        </div>
+      </section>
+
+      <!-- The e-mail route. Always visible, and the only route when JS or the backend is away. -->
+      <section class="req-fallback" aria-labelledby="fallback-title">
+        <h2 class="req__title" id="fallback-title" data-i18n="fallback_h">Prefere e-mail?</h2>
+        <p class="req-fallback__body" data-i18n="fallback_p">Escreva para o endereço abaixo com o e-mail da sua conta e o que você quer apagar. Um pedido por e-mail tem exatamente o mesmo efeito que o formulário.</p>
+        <p class="req-fallback__mail">
+          <a href="mailto:mazariniapp@gmail.com?subject=Exclus%C3%A3o%20de%20conta%20%E2%80%94%20Lista%20Pronta">mazariniapp@gmail.com</a>
+        </p>
+      </section>
+
+    </article>
+  </div>
+
+  <p class="legal-foot">
+    <a href="/" data-i18n="foot_home">Página inicial</a>
+    <a href="/privacy/" data-i18n="foot_privacy">Privacidade</a>
+    <a href="/terms/" data-i18n="foot_terms">Termos de uso</a>
+    <span class="legal-foot__legal">© 2026 Lista Pronta</span>
+  </p>
+</main>
+
+<script type="module" src="request.js"></script>
+</body>
+</html>

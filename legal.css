@@ -234,3 +234,117 @@
 
 /* the header language pills sit on their own row on this page */
 .legal-header__langs { display: flex; justify-content: flex-end; }
+
+/* ------------------------------------------- deletion request form (/delete-account/) */
+
+.req { margin-top: 2.5rem; padding-top: 2rem; border-top: 2px solid var(--line); }
+
+.req__title { font-size: 1.25rem; font-weight: 800; line-height: 1.3; }
+
+.req__form { margin-top: 1.5rem; display: grid; gap: 1.5rem; }
+
+.req-field { display: block; margin: 0; padding: 0; border: 0; }
+
+.req-field--group { min-width: 0; }
+
+.req-field__label {
+  display: block;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.req-field__hint {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.req-field__input {
+  margin-top: 0.625rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--line);
+  border-radius: 0.875rem;
+  background: var(--paper);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.req-field__input:focus-visible { border-color: var(--ink); outline: none; box-shadow: 0 0 0 3px rgba(31, 26, 22, 0.12); }
+
+.req-field__input--area { resize: vertical; min-height: 6rem; }
+
+.req-field__input[aria-invalid="true"] { border-color: var(--danger); }
+
+.req-field__error {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--danger);
+  line-height: 1.5;
+}
+
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--line);
+  border-radius: 0.875rem;
+  cursor: pointer;
+}
+
+.choice:hover { border-color: var(--disabled); }
+
+.choice input { margin: 0.2rem 0 0; width: 1.125rem; height: 1.125rem; accent-color: var(--ink); flex-shrink: 0; }
+
+.choice__text { font-size: 0.9375rem; font-weight: 700; color: var(--ink); line-height: 1.5; }
+
+.choice:has(input:checked) { border-color: var(--ink); background: var(--soft); }
+
+.choice:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+/* result panel */
+.req__state { margin-top: 1.5rem; padding: 1.5rem 1.375rem; border-radius: 1rem; background: var(--soft); }
+
+.req__state[data-state="sent"] { background: var(--icon-green); }
+
+.req__state-title { font-size: 1.125rem; font-weight: 800; color: var(--ink); line-height: 1.3; }
+
+.req__state-body,
+.req__state-note {
+  margin-top: 0.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.req__state-note { color: var(--faint); font-size: 0.875rem; }
+
+.req__state .btn { margin-top: 1.25rem; }
+
+/* the e-mail route */
+.req-fallback { margin-top: 2.5rem; padding-top: 2rem; border-top: 2px solid var(--line); }
+
+.req-fallback__body {
+  margin-top: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.req-fallback__mail { margin-top: 1rem; font-size: 1.0625rem; font-weight: 800; word-break: break-word; }
+
+.req-fallback__mail a { color: var(--ink); }

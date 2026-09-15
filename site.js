@@ -46,7 +46,7 @@
       det_names: ['Leite integral', 'Pão de forma', 'Tomate', 'Café', 'Arroz'],
       det_units: [['litros', 'L'], ['', ''], ['kg', 'kg'], ['', ''], ['kg', 'kg']],
       final_h: 'Pronto para a próxima compra?', final_p: 'Grátis para Android.',
-      privacy: 'Privacidade', terms: 'Termos de uso'
+      privacy: 'Privacidade', terms: 'Termos de uso', delete_account: 'Excluir conta'
     },
     en: {
       lang: 'en',
@@ -86,7 +86,7 @@
       det_names: ['Whole milk', 'Sliced bread', 'Tomatoes', 'Coffee', 'Rice'],
       det_units: [['liters', 'L'], ['', ''], ['kg', 'kg'], ['', ''], ['kg', 'kg']],
       final_h: 'Ready for the next shop?', final_p: 'Free for Android.',
-      privacy: 'Privacy', terms: 'Terms of use'
+      privacy: 'Privacy', terms: 'Terms of use', delete_account: 'Delete account'
     },
     es: {
       lang: 'es',
@@ -126,7 +126,7 @@
       det_names: ['Leche entera', 'Pan de molde', 'Tomates', 'Café', 'Arroz'],
       det_units: [['litros', 'L'], ['', ''], ['kg', 'kg'], ['', ''], ['kg', 'kg']],
       final_h: '¿Listo para la próxima compra?', final_p: 'Gratis para Android.',
-      privacy: 'Privacidad', terms: 'Términos de uso'
+      privacy: 'Privacidad', terms: 'Términos de uso', delete_account: 'Eliminar cuenta'
     }
   };
 
